@@ -1,0 +1,93 @@
+---
+markmap: {}
+---
+
+# 題庫架構
+
+## 單字 Vocabulary
+  - ID: string (單字唯一識別碼)
+  - Word: string (單字)
+  - Translation: string (翻譯)
+  - Phonetic: string (音標)
+  - Description: string (單字描述)
+  - Sentence (例句)
+    - Content: string (句子內容)
+    - Translation: string (句子翻譯)
+  - ImageUrl: string (圖片路徑)
+## 對話 Conversation
+  - Title: string (對話標題)
+  - Description: string (對話描述)
+  - Names: List<string> (對話者名稱列表)
+  - Sentences: List<Sentence> (對話句子列表)
+    - Content: string (句子內容)
+    - Translation: string (句子翻譯)
+    - string (對話情境圖片)
+## 題目 Question 
+  - CardLayout Configuration(單字卡佈局設定, 指出此題題目的單字卡只會顯示哪些欄位、哪些欄位試題目)
+    - contents: List<CardContent(enum)> (單字卡上將顯示的欄位列表)
+      - CardContent (enum) (單字卡內容參數(欄位))
+        - Null (0): 無內容
+        - image (1): 圖片
+        - text (2): 文字
+        - audio (3): 音訊
+        - phonetic (4): 音標
+        - translation (5): 翻譯
+        - description (6): 描述
+        - sentence (7): 句子
+        - practiceModular (8): 練習模組
+    - questionField: CardContent(enum) (單字卡上將作為問題的欄位)
+      - CardContent (enum) (單字卡內容參數(欄位))
+        - Null (0): 無內容
+        - image (1): 圖片
+        - text (2): 文字
+        - audio (3): 音訊
+        - phonetic (4): 音標
+        - translation (5): 翻譯
+        - description (6): 描述
+        - sentence (7): 句子
+        - practiceModular (8): 練習模組
+    - Modular Configuration (模組設定(題型設定), 指出該題目的題型、題目內容等屬性與行為)
+      - modularType: ModularType (模組類型，如發音、選擇題等)
+        - ModularType Enum  (模組類型(題型))
+          - Null (0): 無指定類型
+          - Pronunciation (1): 發音練習
+          - MultipleChoice (2): 選擇題
+          - PairPuzzle (3): 配對拼圖
+          - KeyboardSpelling (4): 鍵盤拼字
+          - TrueOrFalse (5): 是非題
+          - Conversation (6): 對話題
+      - question: string (題目內容)
+      - answer: string (正確答案)
+      - options: List<string> (選項列表，用於選擇題)
+      - score: float (此題分數)
+      - totalAttemptCount: int (允許嘗試次數)
+## 任務 Quest
+  - practiceQuests: List<PracticeQuest 練習任務列表
+    - PracticeQuest (練習任務)
+      - ID: string // 任務唯一識別碼
+      - practiceType: PracticeType // 練習類型
+        - Null (-1): 無指定類型
+        - SeeAndSay: 看圖說話(發音評量)
+        - ReadItOut: 看字念字(發音評量)
+        - ReadSentence: 讀句子(發音評量)
+        - SeeAndSpelling: 看圖拼寫 (鍵盤拼字，逐字母遮罩)
+        - SpellingWord: 拼單字 (鍵盤拼字，逐單字遮罩)
+        - SentenceSpelling: 拼句子 (鍵盤拼出句子中單字，逐單字遮罩)
+        - PuzzleSpelling: 單字拼圖(逐字母拼圖配對)
+        - PuzzleSentence: 句子重組 (句子中隨機單字拼圖，可設定挖空數量)
+        - SeeAndChoose: 看圖選擇 (選擇題看圖選單字，從PracticeLevel 中所有單字隨機抽取)
+        - ChooseItRight: 選擇正確答案 (選擇題單字欄位挖空選字)
+        - SentenceChoose: 選擇句子 (選擇題例句挖空選字)
+        - TrueOrFalse: 是非題(圖片和單字是否匹配)
+        - Conversation: 對話題(照唸單字)
+        - Custom: 自定義
+      - level: LevelDiff // 難度等級 (僅發音題有用)
+        - Easy: 簡單
+        - Medium: 中等
+        - Advanced: 高級
+        - Expert: 專家
+        - Master: 大師
+      - contentType: ContentType // 內容類型
+        - Vocabulary: 單字
+        - Conversation: 對話
+      - contentIDs: List<int> // 內容ID列表
