@@ -1,0 +1,61 @@
+# LMS 系統架構
+
+## App (學生)
+### SpellingBee拼字比賽
+  - 題庫選擇
+    - 開始練習
+### Note 聯絡簿
+  - Homework回家作業
+    - 作業清單
+      - 導航到任務
+        - 開始練習
+  - Notification通知
+    - 通知清單
+  - Messages訊息
+    - 訊息清單
+### Course Review課程複習(機構任務)
+  - 單元選擇
+    - 關卡選擇
+      - 開始練習
+### Conversation對話練習
+  - 對話練習清單
+    - 開始練習
+### LearningJourney學習歷程
+  - 學習歷程清單
+    - 查看單次任務練習紀錄
+
+## Web (老師/管理者)
+### Dashboard首頁
+  - 學生練習任務清單
+  - 指派任務清單
+### 會員管理
+  - 登入、註冊、編輯、停用
+### Library單字管理
+  - 單字清單
+  - CRUD, Batch Import
+### Quests Board題庫管理
+  - Questions題目管理
+    - 題目清單
+    - CRUD
+  - Quests任務管理
+    - 任務清單
+    - CRUD
+    - 指派
+### Reports學習歷程管理
+  - 學生練習任務清單
+    - ViewDetails查看細節
+    - Feedback 給予回饋
+### 通知模組
+  - 任務指派通知
+  - 完成任務通知
+  - 系統通知
+### 學生管理模組
+  - 學生資料管理
+  - 班級管理
+### Management管理
+  - Profile個人資料編輯
+
+## Nice to have in 第一階段
+### 學生管理模組
+  - 學生資料管理
+  - 班級管理
